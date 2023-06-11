@@ -1,11 +1,11 @@
 :root {
     --color-primary: black;
     --color-secondary: white;
-    --color-text: pink;
+    --color-text-primary: pink;
+    --color-text-secondary: yellow;
     --color-background: green;
     --color-highlight: red;
 
-    --font-family: arial;
     --font-size: 16px;
     --line-height: 1rem;
     --heading-color: purple;
@@ -15,6 +15,4 @@
     --spacing-md: 3px;
     --spacing-lg: 4px;
     --spacing-xl: 5px;
-    
 }
-var(--bg)
