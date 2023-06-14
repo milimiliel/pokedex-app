@@ -1,9 +1,22 @@
+"use client";
 import "./card.sass";
 
-import React from "react";
+//TODO: importo context aqui pra controlar o que acontece depois no onclick ou cuido disso no componente acima?
 
-function Card() {
-  return <div>Card</div>;
+interface CardProps {
+  sprite: string;
+  name: string;
+  types: string[];
+}
+
+function Card({ sprite, name, types }: CardProps) {
+  return (
+    <div className="pokedex-card">
+      <img className="pokedex-card-sprite" src={sprite} />
+      <span className="pokedex-card-name">{name}</span>
+      <span className="pokedex-card-types">{`${types[1]} ${types[2]}`}</span>
+    </div>
+  );
 }
 
 export default Card;
