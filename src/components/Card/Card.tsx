@@ -6,7 +6,13 @@ import "./card.sass";
 interface CardProps {
   sprite: string;
   name: string;
-  types: string[];
+  types: Type[];
+}
+
+interface Type {
+  type: {
+    name: string;
+  };
 }
 
 function Card({ sprite, name, types }: CardProps) {
@@ -14,7 +20,7 @@ function Card({ sprite, name, types }: CardProps) {
     <div className="pokedex-card">
       <img className="pokedex-card-sprite" src={sprite} />
       <span className="pokedex-card-name">{name}</span>
-      <span className="pokedex-card-types">{`${types[1]} ${types[2]}`}</span>
+      <span className="pokedex-card-types">{`${types[0].type.name}`}</span>
     </div>
   );
 }
