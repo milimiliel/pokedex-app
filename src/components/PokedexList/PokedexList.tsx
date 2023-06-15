@@ -1,4 +1,5 @@
 "use client";
+import "./PokedexList.sass";
 import { PokeApiContext } from "@/contexts/PokeProvider";
 import { useContext } from "react";
 import Card from "../Card/Card";
@@ -13,7 +14,7 @@ function PokedexList() {
       {isLoading ? (
         <span>"Loading..."</span>
       ) : (
-        <>
+        <div className="pokedex-cards">
           {pokedexData.map((pokemon: any) => {
             return (
               <Card
@@ -24,7 +25,7 @@ function PokedexList() {
               />
             );
           })}
-        </>
+        </div>
       )}
     </main>
   );

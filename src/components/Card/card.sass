@@ -1,21 +1,28 @@
 .pokedex-card
     display: flex
+    height: 10vh
+    width: 40vw
     flex-direction: row
     align-items: center
     justify-content: center
-    border: 1px solid black
-    height: 10vh
-    width: 40vw
     border-radius: 3rem
     font-size: max(1rem, 0.4rem)
     font-weight: bold
+    user-select: none
+    transition: background, height, color 0.1s ease-in
+
+.pokedex-card:hover
+    background: linear-gradient(300deg, black 50%, rgba(227,49,61,1) 60%)
+    height: 11vh
+    color: white
 
 .pokedex-card-sprite
-    flex: 1 1 0
+    flex: 2 1 0
+    height: 140%
     object-fit: contain
 
 .pokedex-card-name
-    flex: 2 1 0
+    flex: 1 1 0
 
 .pokedex-card-types
     flex: 1 1 0

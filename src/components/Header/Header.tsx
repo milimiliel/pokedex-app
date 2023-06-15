@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { PokeApiContext } from "@/contexts/PokeProvider";
 import "./header.sass";
 
