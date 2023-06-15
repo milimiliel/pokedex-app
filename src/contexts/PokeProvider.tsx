@@ -8,17 +8,27 @@ interface Props {
 export const PokeApiContext = createContext({});
 
 export const PokeProvider = ({ children }: Props) => {
-  const [pokedexData, setPokedexData] = useState([]);
+  const [pokedexData, setPokedexData] = useState<Object[]>([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    const fetchedPokeArray = [];
+    for (let i = 1; i <= 20; i++) {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+      const data = await response.json();
+      fetchedPokeArray.push(data);
+    }
+    setPokedexData([...fetchedPokeArray]);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon")
-      .then((response) => response.json())
-      .then((data) => setPokedexData(data.results));
-    console.log(pokedexData);
+    fetchData();
   }, []);
 
   return (
-    <PokeApiContext.Provider value={{ pokedexData }}>
+    <PokeApiContext.Provider value={{ pokedexData, isLoading }}>
       {children}
     </PokeApiContext.Provider>
   );
