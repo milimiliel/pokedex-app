@@ -3,11 +3,12 @@ import "./PokedexList.sass";
 import { PokeApiContext } from "@/contexts/PokeProvider";
 import { useContext } from "react";
 import Card from "../Card/Card";
-
-import React from "react";
+import ArrowDown from "./ArrowDown";
+import ArrowUp from "./ArrowUp";
 
 function PokedexList() {
-  const { pokedexData, isLoading }: any = useContext(PokeApiContext);
+  const { pokedexData, isLoading, nextPage, previousPage }: any =
+    useContext(PokeApiContext);
 
   return (
     <main className="pokedex-list">
@@ -15,6 +16,8 @@ function PokedexList() {
         <span>"Loading..."</span>
       ) : (
         <div className="pokedex-cards">
+          {previousPage && <ArrowUp />}
+
           {pokedexData.map((pokemon: any) => {
             return (
               <Card
@@ -25,6 +28,7 @@ function PokedexList() {
               />
             );
           })}
+          {nextPage && <ArrowDown />}
         </div>
       )}
     </main>

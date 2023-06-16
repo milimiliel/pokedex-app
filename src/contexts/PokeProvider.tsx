@@ -8,27 +8,39 @@ interface Props {
 export const PokeApiContext = createContext({});
 
 export const PokeProvider = ({ children }: Props) => {
-  const [pokedexData, setPokedexData] = useState<Object[]>([]);
+  const [url, setUrl] = useState(
+    "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20"
+  );
 
+  const [pokedexData, setPokedexData] = useState<Object[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [nextPage, setNextPage] = useState("");
+  const [previousPage, setPreviousPage] = useState("");
+
   const fetchData = async () => {
-    const fetchedPokeArray = [];
-    for (let i = 1; i <= 20; i++) {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-      const data = await response.json();
-      fetchedPokeArray.push(data);
-    }
-    setPokedexData([...fetchedPokeArray]);
+    const response = await fetch(url);
+    const data = await response.json();
+    const fetchedUrls = await data.results.map((item: any) => item.url);
+    const fetchedPokemon = await Promise.all(
+      fetchedUrls.map((url: string) => {
+        return fetch(url).then((response) => response.json());
+      })
+    );
+    setNextPage(data.next);
+    setPreviousPage(data.previous || "");
+    setPokedexData([...fetchedPokemon]);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [url]);
 
   return (
-    <PokeApiContext.Provider value={{ pokedexData, isLoading }}>
+    <PokeApiContext.Provider
+      value={{ pokedexData, isLoading, nextPage, previousPage, setUrl }}
+    >
       {children}
     </PokeApiContext.Provider>
   );
