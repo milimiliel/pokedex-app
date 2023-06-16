@@ -20,7 +20,9 @@ function Card({ sprite, name, types }: CardProps) {
     <div className="pokedex-card">
       <img className="pokedex-card-sprite" src={sprite} />
       <span className="pokedex-card-name">{name}</span>
-      <span className="pokedex-card-types">{`${types[0].type.name}`}</span>
+      <span className="pokedex-card-types">{`${types[0].type.name} ${
+        types[1]?.type.name || ""
+      }`}</span>
     </div>
   );
 }
