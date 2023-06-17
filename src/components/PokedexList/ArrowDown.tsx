@@ -1,3 +1,4 @@
+import "./PokedexList.sass";
 import { useContext } from "react";
 import { PokeApiContext } from "@/contexts/PokeProvider";
 
