@@ -46,9 +46,7 @@ function PokedexInfo() {
             <p className="info-category">{genus}</p>
             <div className="col-2">
               <p className="info-category">Type</p>
-              <div className="types">
-                <p className="pokedex-card-types">{`${typeOne} ${typeTwo}`}</p>
-              </div>
+              <p className="types">{`${typeOne} ${typeTwo}`}</p>
             </div>
             <div className="col-2">
               <p className="info-category">Height</p>
