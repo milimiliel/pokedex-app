@@ -25,6 +25,7 @@ function PokedexList() {
                 sprite={pokemon.sprites.front_default}
                 name={pokemon.name}
                 types={pokemon.types}
+                info={pokemon}
               />
             );
           })}
