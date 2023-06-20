@@ -12,6 +12,7 @@ function PokedexInfo() {
     fetch(selectedPokemon?.species?.url)
       .then((response) => response.json())
       .then((data) => setSpeciesInfo(data));
+    console.log(selectedPokemon);
   }, [selectedPokemon]);
 
   const genus = speciesInfo?.genera.find(
@@ -22,8 +23,12 @@ function PokedexInfo() {
     (item: any) => item.language.name === "en" && item.version.name === "shield"
   );
 
+  const typeOne = selectedPokemon?.types[0]?.type?.name;
+
+  const typeTwo = selectedPokemon?.types[1]?.type?.name || "";
+
   return (
-    <div>
+    <div className="pokedex-info">
       {selectedPokemon && (
         <>
           <img
@@ -38,9 +43,7 @@ function PokedexInfo() {
             <div className="col-2">
               <p>Type</p>
               <div className="types">
-                <p className="pokedex-card-types">{`${
-                  selectedPokemon?.types[0].type.name
-                } ${selectedPokemon?.types[1]?.type.name || ""}`}</p>
+                <p className="pokedex-card-types">{`${typeOne} ${typeTwo}`}</p>
               </div>
             </div>
             <div className="col-2">

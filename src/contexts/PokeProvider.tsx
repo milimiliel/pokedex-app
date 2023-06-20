@@ -18,7 +18,7 @@ export const PokeProvider = ({ children }: Props) => {
   const [nextPage, setNextPage] = useState("");
   const [previousPage, setPreviousPage] = useState("");
 
-  const [selectedPokemon, setSelectedPokemon] = useState({});
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   const fetchPokemonListData = async () => {
     const response = await fetch(url);

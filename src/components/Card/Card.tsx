@@ -5,7 +5,7 @@ import { PokeApiContext } from "@/contexts/PokeProvider";
 
 //TODO: importo context aqui pra controlar o que acontece depois no onclick ou cuido disso no componente acima?
 
-function Card({ sprite, name, types, info }: CardProps) {
+function Card({ sprite, name, info }: CardProps) {
   const { setSelectedPokemon }: any = useContext(PokeApiContext);
 
   return (
@@ -23,7 +23,6 @@ export default Card;
 interface CardProps {
   sprite: string;
   name: string;
-  types: Type[];
   info: object;
 }
 
