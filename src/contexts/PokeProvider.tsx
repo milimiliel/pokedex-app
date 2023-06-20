@@ -18,7 +18,9 @@ export const PokeProvider = ({ children }: Props) => {
   const [nextPage, setNextPage] = useState("");
   const [previousPage, setPreviousPage] = useState("");
 
-  const fetchData = async () => {
+  const [selectedPokemon, setSelectedPokemon] = useState({});
+
+  const fetchPokemonListData = async () => {
     const response = await fetch(url);
     const data = await response.json();
     const fetchedUrls = await data.results.map((item: any) => item.url);
@@ -34,12 +36,20 @@ export const PokeProvider = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchPokemonListData();
   }, [url]);
 
   return (
     <PokeApiContext.Provider
-      value={{ pokedexData, isLoading, nextPage, previousPage, setUrl }}
+      value={{
+        pokedexData,
+        isLoading,
+        nextPage,
+        previousPage,
+        setUrl,
+        selectedPokemon,
+        setSelectedPokemon,
+      }}
     >
       {children}
     </PokeApiContext.Provider>

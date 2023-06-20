@@ -11,12 +11,9 @@ function Card({ sprite, name, types, info }: CardProps) {
   return (
     <div className="pokedex-card" onClick={() => setSelectedPokemon(info)}>
       <img className="pokedex-card-sprite" src={sprite} />
-      <span className="pokedex-card-name">{`${name[0].toUpperCase()}${name.slice(
+      <p className="pokedex-card-name">{`${name[0].toUpperCase()}${name.slice(
         1
-      )}`}</span>
-      <span className="pokedex-card-types">{`${types[0].type.name} ${
-        types[1]?.type.name || ""
-      }`}</span>
+      )}`}</p>
     </div>
   );
 }
