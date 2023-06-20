@@ -1,4 +1,5 @@
 import Header from "@/components/Header/Header";
+import PokedexInfo from "@/components/PokedexInfo/PokedexInfo";
 import PokedexList from "@/components/PokedexList/PokedexList";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       <div>
         <Header />
         <PokedexList />
+        <PokedexInfo />
       </div>
     </main>
   );
