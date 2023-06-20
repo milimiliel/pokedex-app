@@ -23,6 +23,10 @@ function PokedexInfo() {
     (item: any) => item.language.name === "en" && item.version.name === "shield"
   );
 
+  const defaultFlavorText = speciesInfo?.flavor_text_entries
+    ?.find((item: any) => item.language.name === "en")
+    ?.flavor_text.replace(/[\n\f]/g, " ");
+
   const typeOne = selectedPokemon?.types[0]?.type?.name;
 
   const typeTwo = selectedPokemon?.types[1]?.type?.name || "";
@@ -39,22 +43,24 @@ function PokedexInfo() {
             className="official-artwork"
           />
           <div className="basic-info-table">
-            <p className="genus">{genus}</p>
+            <p className="info-category">{genus}</p>
             <div className="col-2">
-              <p>Type</p>
+              <p className="info-category">Type</p>
               <div className="types">
                 <p className="pokedex-card-types">{`${typeOne} ${typeTwo}`}</p>
               </div>
             </div>
             <div className="col-2">
-              <p>Height</p>
+              <p className="info-category">Height</p>
               <p>{selectedPokemon?.height}</p>
             </div>
             <div className="col-2">
-              <p>Weight</p>
+              <p className="info-category">Weight</p>
               <p>{selectedPokemon?.weight}</p>
             </div>
-            <p className="flavor-text">{flavorText?.flavor_text}</p>
+            <p className="flavor-text">
+              {flavorText?.flavor_text || defaultFlavorText}
+            </p>
           </div>
         </>
       )}
