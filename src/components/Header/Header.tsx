@@ -11,9 +11,9 @@ function Header() {
   }
 
   return (
-    <header>
+    <header className="poke-header">
       <img src="pokeball-icon-hd.png" onClick={handleClick} />
-      <h1 className="header-h1">Pokédex</h1>
+      <p className="header-text">Pokédex</p>
     </header>
   );
 }

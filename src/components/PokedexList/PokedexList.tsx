@@ -11,7 +11,7 @@ function PokedexList() {
     useContext(PokeApiContext);
 
   return (
-    <main className="pokedex-list">
+    <div className="pokedex-list">
       {isLoading ? (
         <span>"Loading..."</span>
       ) : (
@@ -31,7 +31,7 @@ function PokedexList() {
           {nextPage && <ArrowDown />}
         </div>
       )}
-    </main>
+    </div>
   );
 }
 
